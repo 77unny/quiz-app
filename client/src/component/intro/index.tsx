@@ -1,6 +1,6 @@
 import React, { ReactElement, useState } from 'react';
 
-import { difficulty } from '../../constants';
+import { DIFFICULTY } from '../../constants';
 import { TValue } from '../../constants/types';
 import Button from '../button';
 import Difficulty from '../difficulty';
@@ -9,6 +9,7 @@ import { Container, Title } from './style';
 export default function Intro(): ReactElement {
   const [selectedDifficulty, setDifficulty] = useState<TValue>('random');
 
+  const difficulty = Object.values(DIFFICULTY);
   const handleDifficulty = (value: TValue) => setDifficulty(value);
 
   return (
