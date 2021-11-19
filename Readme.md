@@ -128,3 +128,17 @@
   - 랜덤하게 섞기
   - correct_answer === 선택된 답안
 
+
+
+-----
+
+### Task
+
+##### 11.19 Task
+
+- [x] React + TS + TailwindcCSS + styled-component + Twin.macro 환경 세팅
+- [x] 요구사항 분석 - 전체적인 흐름 분석
+- [x] 인트로 컴포넌트 만들기
+  - [x] 버튼 컴포넌트만들기
+  - [x] 스토리북 세팅 및 적용
+  - [x] 테스트코드 세팅 및 적용
