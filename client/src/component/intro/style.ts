@@ -11,3 +11,11 @@ export const Title = styled.h2`
     ${tw`block font-bold text-4xl text-subColor tracking-wider`}
   }
 `;
+
+export const InfoMessage = styled.p`
+  ${tw`mb-8 text-gray-500`}
+
+  span {
+    ${tw`font-bold text-mainColor`}
+  }
+`;
