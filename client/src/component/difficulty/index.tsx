@@ -1,21 +1,21 @@
 import React, { ReactElement } from 'react';
 
+import { Container, RadioButtonLabel } from './style';
 import { IDifficultyProps, IRadioButtonProps } from './types';
 
 const RadioButton = ({ label, value, isChecked, handleChange }: IRadioButtonProps) => {
   const onChange = () => handleChange(value);
   return (
-    <label>
-      <span>{label}</span>
+    <RadioButtonLabel>
       <input type="radio" value={value} checked={isChecked} onChange={onChange} />
-    </label>
+      <span>{label}</span>
+    </RadioButtonLabel>
   );
 };
 
 export default function Difficulty({ selectedDifficulty, difficulty, handleChange }: IDifficultyProps): ReactElement {
   return (
-    <div>
-      <p>난이도 선택</p>
+    <Container>
       {difficulty.map(({ label, value }) => (
         <RadioButton
           key={value}
@@ -25,6 +25,6 @@ export default function Difficulty({ selectedDifficulty, difficulty, handleChang
           handleChange={handleChange}
         />
       ))}
-    </div>
+    </Container>
   );
 }
