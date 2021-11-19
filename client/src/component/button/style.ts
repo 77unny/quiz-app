@@ -12,5 +12,5 @@ export const Button = styled.button<{ buttonType: 'default' | 'primary'; disable
       ? tw`text-gray-300 bg-gray-100 border border-gray-200 hover:bg-gray-100 cursor-default`
       : tw` cursor-pointer`}
   
-  ${tw`h-10 text-lg rounded border-solid transition ease-in`}
+  ${tw`h-12 text-lg rounded-lg border-solid transition ease-in`}
 `;
