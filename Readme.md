@@ -111,7 +111,16 @@
 
 ##### [고민]
 
+- Test & UI Test
+
+  - CRA test  사용
+  - 어디까지 테스트 할 것인가?
+  - Storybook 을 사용할까...? 
+
+  
+
 - 문항이 몇번째인지 ?
+
   - 문항 컴포넌트에 Props `step` 이라는 상태를 전달해볼까?
   - rudux -  `step` 
 
