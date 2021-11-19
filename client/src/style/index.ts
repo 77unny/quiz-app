@@ -10,7 +10,7 @@ export const GlobalStyle = createGlobalStyle`
   ${reset}
 
   * {
-    ${tw`break-words`}
+    ${tw`break-words antialiased`}
   }
 
   html, body {
