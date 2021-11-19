@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components';
+import styled, { createGlobalStyle } from 'styled-components';
 import reset from 'styled-reset';
 import tw from 'twin.macro';
 
@@ -14,8 +14,13 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   html, body {
-    ${tw`bg-backgroundColor`}
+    ${tw`bg-backgroundColor h-screen`}
   }
+  #root {
+   ${tw`h-full`} 
+  }
+`;
 
-
+export const AppContainer = styled.div`
+  ${tw`flex justify-center items-center h-full`}
 `;
