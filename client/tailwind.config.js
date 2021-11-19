@@ -1,9 +1,9 @@
 const DESIGN_SYSTEM = {
   COLOR: {
-    MAIN: '#00c896',
-    SUB: '#83e3c4',
-    GRAY: '#808080',
-    BACKGROUND: '#f5f5f5',
+    mainColor: '#00c896',
+    subColor: '#83e3c4',
+    grayColor: '#808080',
+    backgroundColor: '#f5f5f5',
   },
   SIZE: {
     0.5: '0.125rem', //2px
