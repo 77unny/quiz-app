@@ -25,6 +25,7 @@ const DESIGN_SYSTEM = {
     19.5: '4.875rem', // 78px
     21: '5.25rem',
     26: '6.5rem', // 104px
+    120: '30rem', // 480px
   },
 };
 
