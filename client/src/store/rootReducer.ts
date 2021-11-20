@@ -1,5 +1,9 @@
 import { combineReducers } from 'redux';
 
-const rootReducer = combineReducers({});
+import quizSlice from './quiz';
+
+const rootReducer = combineReducers({
+  quizSlice,
+});
 
 export default rootReducer;
