@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
+import { TValue } from '../../constants/types';
 import { IQuizInitialState, TQuestion } from './types';
 
 /**
@@ -22,6 +23,10 @@ export const quizSlice = createSlice({
       const { key, value } = action.payload;
       state[key] = value;
     },
+    // 난이도 세팅
+    setDifficulty: (state, action: PayloadAction<TValue>) => {
+      state.difficulty = action.payload;
+    },
     // API response 문항 리스트 세팅
     setQuestions: (state, action: PayloadAction<TQuestion[]>) => {
       state.questions = action.payload;
@@ -39,6 +44,6 @@ export const quizSlice = createSlice({
   },
 });
 
-export const { setTime, reset } = quizSlice.actions;
+export const { setTime, setDifficulty, setQuestions, setAnswer, reset } = quizSlice.actions;
 
 export default quizSlice.reducer;
