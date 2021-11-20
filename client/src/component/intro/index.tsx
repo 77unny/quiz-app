@@ -1,16 +1,22 @@
-import React, { ReactElement, useState } from 'react';
+import React, { ReactElement, useCallback } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { DIFFICULTY } from '../../constants';
 import { TValue } from '../../constants/types';
+import { setDifficulty } from '../../store/quiz';
+import { getQuizState } from '../../store/quiz/selectors';
 import Button from '../button';
 import Difficulty from '../difficulty';
 import { Container, InfoMessage, Title } from './style';
 
 export default function Intro(): ReactElement {
-  const [selectedDifficulty, setDifficulty] = useState<TValue>('random');
+  const dispatch = useDispatch();
+  const { difficulty: selectedDifficulty } = useSelector(getQuizState);
 
   const difficulty = Object.values(DIFFICULTY);
-  const handleDifficulty = (value: TValue) => setDifficulty(value);
+  const handleDifficulty = useCallback((value: TValue) => {
+    dispatch(setDifficulty(value));
+  }, []);
 
   return (
     <Container>
