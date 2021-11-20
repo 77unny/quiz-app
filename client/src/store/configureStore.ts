@@ -1,10 +1,10 @@
-import { configureStore as startKitConfigureStore } from '@reduxjs/toolkit';
+import { configureStore as startKitConfigureStore, EnhancedStore } from '@reduxjs/toolkit';
 import createSagaMiddleware from 'redux-saga';
 
 import rootReducer from './rootReducer';
 import rootSaga from './rootSaga';
 
-const configureStore = () => {
+const configureStore = (): EnhancedStore => {
   const sagaMiddleware = createSagaMiddleware();
 
   const middlewares = [sagaMiddleware];
