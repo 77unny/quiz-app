@@ -18,6 +18,10 @@ export default function Intro(): ReactElement {
     dispatch(setDifficulty(value));
   }, []);
 
+  const handlePlayQuiz = () => {
+    console.log(process.env.REACT_APP_API);
+  };
+
   return (
     <Container>
       <Title>
@@ -28,7 +32,7 @@ export default function Intro(): ReactElement {
       <InfoMessage>
         <span>{DIFFICULTY[selectedDifficulty].label}</span> 난이도를 선택하셨습니다.
       </InfoMessage>
-      <Button buttonType={'primary'} children={'퀴즈 풀기'} />
+      <Button onClick={handlePlayQuiz} buttonType={'primary'} children={'퀴즈 풀기'} />
     </Container>
   );
 }
