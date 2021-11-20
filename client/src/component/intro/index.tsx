@@ -21,7 +21,7 @@ export default function Intro(): ReactElement {
       : `${process.env.REACT_APP_API as string}&difficulty=${selectedDifficulty}`;
   }, [selectedDifficulty]);
 
-  const { data } = useRequest<TQuestion[]>({
+  const { data } = useRequest<{ response_code: number; results: TQuestion[] }>({
     url: API,
   });
 
@@ -35,7 +35,7 @@ export default function Intro(): ReactElement {
   };
 
   useEffect(() => {
-    if (data) dispatch(setQuestions(data));
+    if (data) dispatch(setQuestions(data.results));
   }, [data]);
 
   return (
