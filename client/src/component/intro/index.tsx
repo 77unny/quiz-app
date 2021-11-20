@@ -1,10 +1,12 @@
-import React, { ReactElement, useCallback } from 'react';
+import React, { ReactElement, useCallback, useEffect, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { DIFFICULTY } from '../../constants';
 import { TValue } from '../../constants/types';
-import { setDifficulty } from '../../store/quiz';
+import useRequest from '../../hooks/useRequest';
+import { setDifficulty, setProgress, setQuestions } from '../../store/quiz';
 import { getQuizState } from '../../store/quiz/selectors';
+import { TQuestion } from '../../store/quiz/types';
 import Button from '../button';
 import Difficulty from '../difficulty';
 import { Container, InfoMessage, Title } from './style';
@@ -13,14 +15,28 @@ export default function Intro(): ReactElement {
   const dispatch = useDispatch();
   const { difficulty: selectedDifficulty } = useSelector(getQuizState);
 
+  const API = useMemo(() => {
+    return selectedDifficulty === 'random'
+      ? process.env.REACT_APP_API
+      : `${process.env.REACT_APP_API as string}&difficulty=${selectedDifficulty}`;
+  }, [selectedDifficulty]);
+
+  const { data } = useRequest<TQuestion[]>({
+    url: API,
+  });
+
   const difficulty = Object.values(DIFFICULTY);
   const handleDifficulty = useCallback((value: TValue) => {
     dispatch(setDifficulty(value));
   }, []);
 
   const handlePlayQuiz = () => {
-    console.log(process.env.REACT_APP_API);
+    dispatch(setProgress(true));
   };
+
+  useEffect(() => {
+    if (data) dispatch(setQuestions(data));
+  }, [data]);
 
   return (
     <Container>
