@@ -1,12 +1,7 @@
-import { TDifficultyProperty, TValue } from '../../constants/types';
-
-export interface IRadioButtonProps extends TDifficultyProperty {
-  isChecked: boolean;
-  handleChange: (value: TValue) => void;
-}
+import { TDifficultyProperty } from '../../constants/types';
 
 export interface IDifficultyProps {
-  selectedDifficulty: TValue;
+  selectedDifficulty: string;
   difficulty: TDifficultyProperty[];
-  handleChange: (value: TValue) => void;
+  handleChange: (value: string) => void;
 }

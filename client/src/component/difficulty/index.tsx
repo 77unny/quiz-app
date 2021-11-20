@@ -1,17 +1,8 @@
 import React, { ReactElement } from 'react';
 
-import { Container, RadioButtonLabel } from './style';
-import { IDifficultyProps, IRadioButtonProps } from './types';
-
-function RadioButton({ label, value, isChecked, handleChange }: IRadioButtonProps) {
-  const onChange = () => handleChange(value);
-  return (
-    <RadioButtonLabel>
-      <input type="radio" value={value} checked={isChecked} onChange={onChange} />
-      <span>{label}</span>
-    </RadioButtonLabel>
-  );
-}
+import RadioButton from '../radioButton';
+import { Container } from './style';
+import { IDifficultyProps } from './types';
 
 export default function Difficulty({ selectedDifficulty, difficulty, handleChange }: IDifficultyProps): ReactElement {
   return (

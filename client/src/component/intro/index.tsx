@@ -2,7 +2,6 @@ import React, { ReactElement, useCallback, useEffect, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { DIFFICULTY } from '../../constants';
-import { TValue } from '../../constants/types';
 import useRequest from '../../hooks/useRequest';
 import { setDifficulty, setProgress, setQuestions } from '../../store/quiz';
 import { getQuizState } from '../../store/quiz/selectors';
@@ -26,7 +25,7 @@ export default function Intro(): ReactElement {
   });
 
   const difficulty = Object.values(DIFFICULTY);
-  const handleDifficulty = useCallback((value: TValue) => {
+  const handleDifficulty = useCallback((value: string) => {
     dispatch(setDifficulty(value));
   }, []);
 

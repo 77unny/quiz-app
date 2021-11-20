@@ -22,7 +22,7 @@ export type TQuestion = {
 export interface IQuizInitialState {
   progress: boolean;
   elapsedTime: number;
-  difficulty: TValue;
+  difficulty: string;
   NumberOfCorrectAnswer: number;
   NumberOfIncorrectAnswer: number;
   questions: TQuestion[];
