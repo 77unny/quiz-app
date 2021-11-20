@@ -20,6 +20,7 @@ export type TQuestion = {
  - 문제리스트? : 추후 다시풀기 라는 기능 만들어 볼때 사용할 수 있을듯..?!
  */
 export interface IQuizInitialState {
+  progress: boolean;
   elapsedTime: number;
   difficulty: TValue;
   NumberOfCorrectAnswer: number;
