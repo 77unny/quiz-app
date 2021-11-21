@@ -26,4 +26,5 @@ export interface IQuizInitialState {
   NumberOfCorrectAnswer: number;
   NumberOfIncorrectAnswer: number;
   questions: TQuestion[];
+  answers: boolean[];
 }

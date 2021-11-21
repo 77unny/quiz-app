@@ -12,6 +12,7 @@ const initialState: IQuizInitialState = {
   NumberOfCorrectAnswer: 0, // 정답 수
   NumberOfIncorrectAnswer: 0, // 오답 수
   questions: [], // API response 문항 리스트
+  answers: [],
 };
 
 export const quizSlice = createSlice({
@@ -35,12 +36,13 @@ export const quizSlice = createSlice({
       state.questions = action.payload;
     },
     // 정답 오답 세팅
-    setAnswer: (
-      state,
-      action: PayloadAction<{ key: 'NumberOfCorrectAnswer' | 'NumberOfIncorrectAnswer'; value: number }>,
-    ) => {
-      const { key, value } = action.payload;
-      state[key] = value;
+    setAnswer: (state, action: PayloadAction<boolean>) => {
+      if (action.payload) {
+        state.NumberOfCorrectAnswer = state.NumberOfCorrectAnswer + 1;
+      } else {
+        state.NumberOfIncorrectAnswer = state.NumberOfIncorrectAnswer + 1;
+      }
+      state.answers.push(action.payload);
     },
     // 초기화
     reset: () => initialState,
