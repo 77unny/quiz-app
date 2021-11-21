@@ -1,5 +1,5 @@
 import DOMPurify from 'dompurify';
-import React, { ReactElement, useState } from 'react';
+import React, { ReactElement, useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { DIFFICULTY, QUIZ_MESSAGE } from '../../../constants';
@@ -7,6 +7,7 @@ import { setAnswer } from '../../../store/quiz';
 import { getQuizState } from '../../../store/quiz/selectors';
 import Button from '../../atoms/button';
 import InfoMessage from '../../atoms/infoMessage';
+import Timer from '../../atoms/timer';
 import Answers from '../../molecules/answer';
 import { Container, Inner, Subject, Title } from './style';
 
@@ -17,6 +18,8 @@ export default function Quiz(): ReactElement {
   const [step, setStep] = useState(0);
   const [selected, setSelected] = useState(true);
   const [selectedAnswer, setSelectedAnswer] = useState('');
+  const [time, setTime] = useState(0);
+  const timeRef = useRef(time);
 
   const handleSelectAnswer = (value: string) => {
     setSelectedAnswer(value);
@@ -31,8 +34,18 @@ export default function Quiz(): ReactElement {
     dispatch(setAnswer(questions[step].correct_answer === selectedAnswer));
   };
 
+  useEffect(() => {
+    timeRef.current = setInterval(() => setTime(time + 1), 1000) as unknown as number;
+    return () => clearInterval(timeRef.current);
+  }, [time]);
+
+  useEffect(() => {
+    if (!questions[step]) clearInterval(timeRef.current);
+  }, [step]);
+
   return (
     <Container>
+      <Timer time={time} />
       {questions[step] ? (
         <>
           <Title>
