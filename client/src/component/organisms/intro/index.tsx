@@ -7,8 +7,9 @@ import { setDifficulty, setProgress, setQuestions } from '../../../store/quiz';
 import { getQuizState } from '../../../store/quiz/selectors';
 import { TQuestion } from '../../../store/quiz/types';
 import Button from '../../atoms/button';
+import InfoMessage from '../../atoms/infoMessage';
 import Difficulty from '../../molecules/difficulty';
-import { Container, InfoMessage, Title } from './style';
+import { Container, Title } from './style';
 
 export default function Intro(): ReactElement {
   const dispatch = useDispatch();
@@ -44,9 +45,7 @@ export default function Intro(): ReactElement {
         <span>퀴즈를 풀어보세요!</span>
       </Title>
       <Difficulty selectedDifficulty={selectedDifficulty} difficulty={difficulty} handleChange={handleDifficulty} />
-      <InfoMessage>
-        <span>{DIFFICULTY[selectedDifficulty].label}</span> 난이도를 선택하셨습니다.
-      </InfoMessage>
+      <InfoMessage children={`<span>${DIFFICULTY[selectedDifficulty].label}</span> 난이도를 선택하셨습니다`} />
       {/*
         Todo : onClick 시에 데이터 패치를해서 화면 전환 시키자.
         - 현재는 로딩시 불러오는데 화면이 보이자마자 버튼을 누르면 없는데이터라 에러뜸
