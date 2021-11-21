@@ -12,6 +12,10 @@ export default {
       options: ['default', 'primary'],
       control: { type: 'radio' },
     },
+    size: {
+      options: ['default', 'large', 'middle', 'small'],
+      control: { type: 'radio' },
+    },
   },
 } as Meta;
 
@@ -35,6 +39,7 @@ const defaultArgs: IStoriesProps = {
   title: 'Button',
   children: ' Button',
   buttonType: 'default',
+  size: 'default',
   disabled: false,
 };
 
