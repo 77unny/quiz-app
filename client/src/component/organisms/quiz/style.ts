@@ -28,5 +28,5 @@ export const Inner = styled.div`
 `;
 
 export const Subject = styled.p`
-  ${tw`mb-4 pb-3 font-bold text-xl text-gray-600 border-b border-dashed border-gray-400 leading-6`}
+  ${tw`relative mb-4 pb-3 font-bold text-xl text-gray-600 border-b border-dashed border-gray-400 leading-6`}
 `;
