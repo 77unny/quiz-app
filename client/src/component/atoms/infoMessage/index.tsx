@@ -1,4 +1,5 @@
-import React, { ReactElement, ReactNode } from 'react';
+import DOMPurify from 'dompurify';
+import React, { ReactElement } from 'react';
 
 import { Container } from './style';
 
@@ -7,7 +8,7 @@ export default function InfoMessage({
   children,
 }: {
   align?: 'left' | 'center' | 'right';
-  children: ReactNode;
+  children: string;
 }): ReactElement {
-  return <Container align={align} children={children} />;
+  return <Container align={align} dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(children) }} />;
 }
