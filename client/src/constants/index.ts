@@ -18,3 +18,9 @@ export const DIFFICULTY: IDifficulty = {
     value: 'hard',
   },
 };
+
+export const QUIZ_MESSAGE = {
+  empty: '답을 선택해주세요 🧐',
+  correct: '정답이에요 🥳',
+  incorrect: '아쉬워요 😭',
+};
