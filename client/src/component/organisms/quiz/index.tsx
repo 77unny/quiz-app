@@ -2,10 +2,11 @@ import DOMPurify from 'dompurify';
 import React, { ReactElement, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { DIFFICULTY } from '../../../constants';
+import { DIFFICULTY, QUIZ_MESSAGE } from '../../../constants';
 import { setAnswer } from '../../../store/quiz';
 import { getQuizState } from '../../../store/quiz/selectors';
 import Button from '../../atoms/button';
+import InfoMessage from '../../atoms/infoMessage';
 import Answers from '../../molecules/answer';
 import { Container, Inner, Subject, Title } from './style';
 
@@ -43,6 +44,18 @@ export default function Quiz(): ReactElement {
           <Inner>
             <Subject dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(questions[step].question) }} />
             <Answers questions={questions[step]} selectedValue={selectedAnswer} handleChange={handleSelectAnswer} />
+            <InfoMessage
+              align={'center'}
+              children={
+                QUIZ_MESSAGE[
+                  selectedAnswer === ''
+                    ? 'empty'
+                    : questions[step].correct_answer === selectedAnswer
+                    ? 'correct'
+                    : 'incorrect'
+                ]
+              }
+            />
             <Button buttonType={'primary'} disabled={selected} onClick={onClickNext}>
               다음 문제
             </Button>
