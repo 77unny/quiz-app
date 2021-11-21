@@ -30,17 +30,3 @@ export const Inner = styled.div`
 export const Subject = styled.p`
   ${tw`mb-4 pb-3 font-bold text-xl text-gray-600 border-b border-dashed border-gray-400 leading-6`}
 `;
-
-export const AnswerContainer = styled.div`
-  ${tw`mb-4`}
-
-  ul {
-    ${tw`grid grid-cols-2 gap-2`}
-  }
-
-  label {
-    span {
-      ${tw`w-auto`}
-    }
-  }
-`;
