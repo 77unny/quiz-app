@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 
 import { Container } from './style';
 import { IRadioButtonProps } from './types';
 
-export default function RadioButton<T>({ label, value, isChecked, handleChange }: IRadioButtonProps<T>) {
+export default function RadioButton<T>({ label, value, isChecked, handleChange }: IRadioButtonProps<T>): ReactElement {
   const onChange = () => handleChange(value);
   return (
     <Container>
