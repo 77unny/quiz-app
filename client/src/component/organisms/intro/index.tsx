@@ -1,13 +1,13 @@
 import React, { ReactElement, useCallback, useEffect, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { DIFFICULTY } from '../../constants';
-import useRequest from '../../hooks/useRequest';
-import { setDifficulty, setProgress, setQuestions } from '../../store/quiz';
-import { getQuizState } from '../../store/quiz/selectors';
-import { TQuestion } from '../../store/quiz/types';
-import Button from '../button';
-import Difficulty from '../difficulty';
+import { DIFFICULTY } from '../../../constants';
+import useRequest from '../../../hooks/useRequest';
+import { setDifficulty, setProgress, setQuestions } from '../../../store/quiz';
+import { getQuizState } from '../../../store/quiz/selectors';
+import { TQuestion } from '../../../store/quiz/types';
+import Button from '../../atoms/button';
+import Difficulty from '../../molecules/difficulty';
 import { Container, InfoMessage, Title } from './style';
 
 export default function Intro(): ReactElement {

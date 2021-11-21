@@ -1,7 +1,7 @@
 import React, { ReactElement, useMemo } from 'react';
 
 import * as utils from '../../../utils';
-import RadioButton from '../../radioButton';
+import RadioButton from '../../atoms/radioButton';
 import { Container } from './style';
 import { IAnswerProps } from './types';
 

@@ -2,11 +2,11 @@ import DOMPurify from 'dompurify';
 import React, { ReactElement, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { DIFFICULTY } from '../../constants';
-import { setAnswer } from '../../store/quiz';
-import { getQuizState } from '../../store/quiz/selectors';
-import Button from '../button';
-import Answers from './answer';
+import { DIFFICULTY } from '../../../constants';
+import { setAnswer } from '../../../store/quiz';
+import { getQuizState } from '../../../store/quiz/selectors';
+import Button from '../../atoms/button';
+import Answers from '../../molecules/answer';
 import { Container, Inner, Subject, Title } from './style';
 
 export default function Quiz(): ReactElement {

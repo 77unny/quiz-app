@@ -1,6 +1,6 @@
 import React, { ReactElement } from 'react';
 
-import RadioButton from '../radioButton';
+import RadioButton from '../../atoms/radioButton';
 import { Container } from './style';
 import { IDifficultyProps } from './types';
 

@@ -1,8 +1,8 @@
 import React, { ReactElement } from 'react';
 import { useSelector } from 'react-redux';
 
-import Intro from './component/intro';
-import Quiz from './component/quiz';
+import Intro from './component/organisms/intro';
+import Quiz from './component/organisms/quiz';
 import { getQuizState } from './store/quiz/selectors';
 import { AppContainer } from './style';
 

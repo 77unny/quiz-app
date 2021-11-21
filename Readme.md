@@ -161,9 +161,10 @@
 ##### 11.21 Task
 
 - [ ] Intro 퀴즈 풀기 버튼 onClick-> 경과 시간컴포넌트 구현
-- [ ] 퀴즈 컴포넌트 보기 선택시 onClick 
-  - [ ] radio seleced 가 되어야 한다.
-  - [ ] 다음문제 버튼 disabled false 가 되어야 한다.
-- [ ] 다음 문제 버튼 onClick
-  - [ ] step 카운트가 증가한다.
-  - [ ] 정답 / 오답 카운트가 증가한다.
+- [x] 퀴즈 컴포넌트 보기 선택시 onClick 
+  - [x] radio seleced 가 되어야 한다.
+  - [x] 다음문제 버튼 disabled false 가 되어야 한다.
+  - [ ] 정답 채점 - 버튼? 메시지? (이부분은 기획에 따라..)
+- [x] 다음 문제 버튼 onClick
+  - [x] step 카운트가 증가한다.
+  - [x] 정답 / 오답 카운트가 증가한다.

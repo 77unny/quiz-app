@@ -1,4 +1,4 @@
-import { TDifficultyProperty } from '../../constants/types';
+import { TDifficultyProperty } from '../../../constants/types';
 
 export interface IDifficultyProps {
   selectedDifficulty: string;
