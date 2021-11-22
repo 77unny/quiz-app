@@ -54,7 +54,12 @@ export default function Intro(): ReactElement {
         - 그래서 핸들러에 데이터 패치를 해두자!
       */}
       <ButtonWrap>
-        <Button onClick={handlePlayQuiz} buttonType={'primary'} children={'퀴즈 풀기'} disabled={!data} />
+        <Button
+          onClick={handlePlayQuiz}
+          buttonType={'primary'}
+          children={!data ? '로딩중...' : '퀴즈 풀기'}
+          disabled={!data}
+        />
         <Button size={'small'} onClick={onClickModal} children={'기록보기'} />
       </ButtonWrap>
     </Container>
