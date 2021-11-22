@@ -1,3 +1,4 @@
+import ReactModal from 'react-modal';
 import styled, { createGlobalStyle } from 'styled-components';
 import reset from 'styled-reset';
 import tw from 'twin.macro';
@@ -23,4 +24,8 @@ export const GlobalStyle = createGlobalStyle`
 
 export const AppContainer = styled.div`
   ${tw`flex justify-center items-center h-full`}
+`;
+
+export const Modal = styled(ReactModal)`
+  ${tw`w-2/3 min-h-1/4 rounded-xl shadow bg-white`}
 `;

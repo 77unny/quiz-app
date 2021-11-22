@@ -1,13 +1,13 @@
 import React, { ReactElement } from 'react';
-import Modal from 'react-modal';
 import { useDispatch, useSelector } from 'react-redux';
 
+import History from './component/molecules/history';
 import Intro from './component/organisms/intro';
 import Quiz from './component/organisms/quiz';
 import { setIsOpen } from './store/modal';
 import { getModalState } from './store/modal/selector';
 import { getQuizState } from './store/quiz/selectors';
-import { AppContainer } from './style';
+import { AppContainer, Modal } from './style';
 
 export default function App(): ReactElement {
   const dispatch = useDispatch();
@@ -19,7 +19,19 @@ export default function App(): ReactElement {
   return (
     <AppContainer>
       {progress ? <Quiz /> : <Intro />}
-      <Modal isOpen={isOpen} onRequestClose={onRequestClose} children={'This is Modal content'} />
+      <Modal
+        style={{
+          overlay: {
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            backgroundColor: 'rgba(0, 0, 0, 0.3)',
+          },
+        }}
+        isOpen={isOpen}
+        onRequestClose={onRequestClose}
+        children={<History />}
+      />
     </AppContainer>
   );
 }
