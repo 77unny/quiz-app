@@ -36,9 +36,15 @@ export default function Quiz(): ReactElement {
     dispatch(setAnswer(questions[step].correct_answer === selectedAnswer));
   };
 
-  const onClickReset = () => {
+  // 처음으로 - 초기화 처리
+  const onClickHome = () => {
     dispatch(setProgress(false));
     dispatch(reset());
+  };
+
+  // 다시 풀기 - Todo
+  const onClickRestart = () => {
+    console.log('@TODO : redux 에 저장된 문항으로 재시작하기!');
   };
 
   const onClickModal = () => dispatch(setIsOpen(true));
@@ -118,9 +124,9 @@ export default function Quiz(): ReactElement {
               </li>
             </ResultInfo>
             <ButtonWrap>
-              <Button size={'small'} onClick={onClickReset} children={'처음으로'} />
+              <Button size={'small'} onClick={onClickHome} children={'처음으로'} />
               <Button size={'small'} onClick={onClickModal} children={'기록보기'} />
-              <Button buttonType={'primary'} size={'small'} onClick={onClickNext} children={'다시 풀기'} />
+              <Button buttonType={'primary'} size={'small'} onClick={onClickRestart} children={'다시 풀기'} />
             </ButtonWrap>
           </Inner>
         </>
