@@ -28,7 +28,7 @@ export const Inner = styled.div<{ ended?: boolean }>`
 `;
 
 export const Subject = styled.p`
-  ${tw`relative mb-4 pb-3 font-bold text-xl text-gray-600 border-b border-dashed border-gray-400 leading-6`}
+  ${tw`relative mb-4 pb-3 font-bold sm:text-xl text-gray-600 border-b border-dashed border-gray-400 sm:leading-6`}
 `;
 
 export const ResultInfo = styled.ul`
@@ -36,11 +36,11 @@ export const ResultInfo = styled.ul`
   li {
     ${tw`flex justify-between items-center `}
     & + li {
-      ${tw`mt-2`}
+      ${tw`sm:mt-2`}
     }
     span,
     p {
-      ${tw`text-gray-400 font-normal not-italic`}
+      ${tw`text-gray-400 text-sm sm:font-normal font-normal not-italic`}
     }
   }
 `;
