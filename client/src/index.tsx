@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Modal from 'react-modal';
 import { Provider } from 'react-redux';
 
 import App from './App';
@@ -15,3 +16,5 @@ ReactDOM.render(
   </React.StrictMode>,
   document.getElementById('root'),
 );
+
+Modal.setAppElement('#root');
