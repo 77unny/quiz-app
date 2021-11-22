@@ -13,6 +13,6 @@ export const Row = styled.div`
   }
   span,
   span p {
-    ${tw`text-sm font-normal not-italic`}
+    ${tw`text-xs sm:text-sm font-normal not-italic`}
   }
 `;
