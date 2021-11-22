@@ -35,7 +35,7 @@ export const Button = styled.button<{
     }
     return sizeClass;
   }}
-  ${tw`relative h-12 text-lg rounded-lg border-solid transition ease-in`}
+  ${tw`relative h-10 text-xs sm:h-10 sm:text-sm rounded-lg border-solid transition ease-in`}
 `;
 
 export const PrimaryIcon = styled(FontAwesomeIcon)`

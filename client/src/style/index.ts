@@ -27,5 +27,5 @@ export const AppContainer = styled.div`
 `;
 
 export const Modal = styled(ReactModal)`
-  ${tw`w-2/3 min-h-1/4 rounded-xl shadow bg-white`}
+  ${tw`w-11/12 sm:w-2/3 min-h-1/4 rounded-xl shadow bg-white`}
 `;
