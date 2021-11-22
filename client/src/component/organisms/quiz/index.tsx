@@ -5,21 +5,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import { DIFFICULTY, QUIZ_MESSAGE } from '../../../constants';
 import { setAnswer } from '../../../store/quiz';
 import { getQuizState } from '../../../store/quiz/selectors';
-import { TQuestion } from '../../../store/quiz/types';
+import { saveToLocalstorage } from '../../../utils';
 import Button from '../../atoms/button';
 import InfoMessage from '../../atoms/infoMessage';
 import Timer from '../../atoms/timer';
 import Answers from '../../molecules/answer';
 import { ButtonWrap, Container, Inner, ResultInfo, Subject, Title } from './style';
-
-interface ISaveData {
-  setDate: string;
-  questions: TQuestion[];
-  difficulty: string;
-  NumberOfCorrectAnswer: number;
-  NumberOfIncorrectAnswer: number;
-  time: number;
-}
 
 export default function Quiz(): ReactElement {
   const dispatch = useDispatch();
@@ -54,16 +45,8 @@ export default function Quiz(): ReactElement {
     if (!questions[step]) {
       clearInterval(timeRef.current);
       const setDate = new Date().toLocaleString();
-      const saveData: ISaveData[] = [
-        { setDate, questions, difficulty, NumberOfCorrectAnswer, NumberOfIncorrectAnswer, time },
-      ];
-      if (window.localStorage.getItem('quiz') !== null) {
-        const getItem = JSON.parse(window.localStorage.getItem('quiz') || '[]') as ISaveData[];
-        const mergedItems = getItem.concat(saveData);
-        localStorage.setItem('quiz', JSON.stringify(mergedItems));
-      } else {
-        window.localStorage.setItem('quiz', JSON.stringify([...saveData]));
-      }
+      const saveData = [{ setDate, questions, difficulty, NumberOfCorrectAnswer, NumberOfIncorrectAnswer, time }];
+      saveToLocalstorage('quiz', saveData);
     }
   }, [step]);
 
