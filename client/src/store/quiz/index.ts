@@ -23,9 +23,8 @@ export const quizSlice = createSlice({
       state.progress = action.payload;
     },
     // 경과 시간 세팅
-    setTime: (state, action: PayloadAction<{ key: 'elapsedTime'; value: number }>) => {
-      const { key, value } = action.payload;
-      state[key] = value;
+    setElapsedTime: (state, action: PayloadAction<number>) => {
+      state.elapsedTime = action.payload;
     },
     // 난이도 세팅
     setDifficulty: (state, action: PayloadAction<string>) => {
@@ -49,6 +48,6 @@ export const quizSlice = createSlice({
   },
 });
 
-export const { setProgress, setTime, setDifficulty, setQuestions, setAnswer, reset } = quizSlice.actions;
+export const { setProgress, setElapsedTime, setDifficulty, setQuestions, setAnswer, reset } = quizSlice.actions;
 
 export default quizSlice.reducer;

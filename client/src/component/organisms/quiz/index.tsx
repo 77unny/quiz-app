@@ -3,7 +3,7 @@ import React, { ReactElement, useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { DIFFICULTY, QUIZ_MESSAGE } from '../../../constants';
-import { setAnswer } from '../../../store/quiz';
+import { setAnswer, setElapsedTime } from '../../../store/quiz';
 import { getQuizState } from '../../../store/quiz/selectors';
 import Button from '../../atoms/button';
 import InfoMessage from '../../atoms/infoMessage';
@@ -42,6 +42,7 @@ export default function Quiz(): ReactElement {
   useEffect(() => {
     if (!questions[step]) {
       clearInterval(timeRef.current);
+      dispatch(setElapsedTime(time));
     }
   }, [step]);
 
