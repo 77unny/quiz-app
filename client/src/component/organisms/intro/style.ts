@@ -11,3 +11,7 @@ export const Title = styled.h2`
     ${tw`block font-bold text-4xl text-subColor tracking-wider`}
   }
 `;
+
+export const ButtonWrap = styled.div`
+  ${tw`flex space-x-2 w-full`}
+`;

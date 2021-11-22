@@ -3,13 +3,14 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { DIFFICULTY } from '../../../constants';
 import useRequest from '../../../hooks/useRequest';
+import { setIsOpen } from '../../../store/modal';
 import { setDifficulty, setProgress, setQuestions } from '../../../store/quiz';
 import { getQuizState } from '../../../store/quiz/selectors';
 import { TQuestion } from '../../../store/quiz/types';
 import Button from '../../atoms/button';
 import InfoMessage from '../../atoms/infoMessage';
 import Difficulty from '../../molecules/difficulty';
-import { Container, Title } from './style';
+import { ButtonWrap, Container, Title } from './style';
 
 export default function Intro(): ReactElement {
   const dispatch = useDispatch();
@@ -30,9 +31,8 @@ export default function Intro(): ReactElement {
     dispatch(setDifficulty(value));
   }, []);
 
-  const handlePlayQuiz = () => {
-    dispatch(setProgress(true));
-  };
+  const handlePlayQuiz = () => dispatch(setProgress(true));
+  const onClickModal = () => dispatch(setIsOpen(true));
 
   useEffect(() => {
     if (data) dispatch(setQuestions(data.results));
@@ -53,7 +53,10 @@ export default function Intro(): ReactElement {
         - 이렇게 해두니까 일단은 괜찮은데 난이도 선택시 UI 스타일이 변하는게 조금 ... 불편..
         - 그래서 핸들러에 데이터 패치를 해두자!
       */}
-      <Button onClick={handlePlayQuiz} buttonType={'primary'} children={'퀴즈 풀기'} disabled={!data} />
+      <ButtonWrap>
+        <Button onClick={handlePlayQuiz} buttonType={'primary'} children={'퀴즈 풀기'} disabled={!data} />
+        <Button size={'small'} onClick={onClickModal} children={'기록보기'} />
+      </ButtonWrap>
     </Container>
   );
 }
