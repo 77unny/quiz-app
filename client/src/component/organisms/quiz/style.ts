@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import tw from 'twin.macro';
 
 export const Container = styled.div`
-  ${tw`flex flex-col w-120 p-8 border-2 border-solid border-mainColor rounded-2xl bg-subColor bg-opacity-20`}
+  ${tw`flex flex-col w-10/12 sm:w-120 p-4 sm:p-8 border-2 border-solid border-mainColor rounded-2xl bg-subColor bg-opacity-20`}
 `;
 
 export const Title = styled.h2`
@@ -19,7 +19,7 @@ export const Title = styled.h2`
 `;
 
 export const Inner = styled.div<{ ended?: boolean }>`
-  ${tw`overflow-hidden relative flex flex-col p-8 rounded-2xl bg-white`}
+  ${tw`overflow-hidden relative flex flex-col p-4 sm:p-8 rounded-2xl bg-white`}
 
   &::before {
     ${tw`absolute -top-2 -left-2 font-black text-8xl text-subColor text-opacity-20 z-0`}
