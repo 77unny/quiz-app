@@ -9,11 +9,11 @@ import Button from '../../atoms/button';
 import InfoMessage from '../../atoms/infoMessage';
 import Timer from '../../atoms/timer';
 import Answers from '../../molecules/answer';
-import { Container, Inner, Subject, Title } from './style';
+import { ButtonWrap, Container, Inner, ResultInfo, Subject, Title } from './style';
 
 export default function Quiz(): ReactElement {
   const dispatch = useDispatch();
-  const { questions } = useSelector(getQuizState);
+  const { questions, difficulty, NumberOfCorrectAnswer, NumberOfIncorrectAnswer } = useSelector(getQuizState);
 
   const [step, setStep] = useState(0);
   const [selected, setSelected] = useState(true);
@@ -40,14 +40,16 @@ export default function Quiz(): ReactElement {
   }, [time]);
 
   useEffect(() => {
-    if (!questions[step]) clearInterval(timeRef.current);
+    if (!questions[step]) {
+      clearInterval(timeRef.current);
+    }
   }, [step]);
 
   return (
     <Container>
-      <Timer time={time} />
       {questions[step] ? (
         <>
+          <Timer time={time} prefix={'[진행 시간]'} />
           <Title>
             <span>
               <span>STEP{step + 1}.</span> QUIZ
@@ -75,7 +77,46 @@ export default function Quiz(): ReactElement {
           </Inner>
         </>
       ) : (
-        <span>초기화</span>
+        <>
+          <Inner ended={true}>
+            <Subject children={'클래스팅 퀴즈 종료! 수고하셨습니다 🥳'} />
+            <ResultInfo>
+              <li>
+                <span>난이도</span>
+                <span>{DIFFICULTY[difficulty].label}</span>
+              </li>
+              <li>
+                <span>소요 시간</span>
+                <span>
+                  <Timer time={time} />
+                </span>
+              </li>
+              <li>
+                <span>정답 개수</span>
+                <span>{NumberOfCorrectAnswer}</span>
+              </li>
+              <li>
+                <span>오답 수</span>
+                <span>{NumberOfIncorrectAnswer}</span>
+              </li>
+              <li>
+                <span>정답 비율</span>
+                <span>{(NumberOfCorrectAnswer / questions.length) * 100}%</span>
+              </li>
+            </ResultInfo>
+            <ButtonWrap>
+              <Button size={'small'} onClick={onClickNext}>
+                처음으로
+              </Button>
+              <Button size={'small'} onClick={onClickNext}>
+                기록보기
+              </Button>
+              <Button buttonType={'primary'} size={'small'} onClick={onClickNext}>
+                다시 풀기
+              </Button>
+            </ButtonWrap>
+          </Inner>
+        </>
       )}
     </Container>
   );

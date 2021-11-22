@@ -30,3 +30,21 @@ export const Inner = styled.div<{ ended?: boolean }>`
 export const Subject = styled.p`
   ${tw`relative mb-4 pb-3 font-bold text-xl text-gray-600 border-b border-dashed border-gray-400 leading-6`}
 `;
+
+export const ResultInfo = styled.ul`
+  ${tw`mb-4 px-4`}
+  li {
+    ${tw`flex justify-between items-center `}
+    & + li {
+      ${tw`mt-2`}
+    }
+    span,
+    p {
+      ${tw`text-gray-400 font-normal not-italic`}
+    }
+  }
+`;
+
+export const ButtonWrap = styled.div`
+  ${tw`flex space-x-2`}
+`;
