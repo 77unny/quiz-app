@@ -26,7 +26,7 @@ export default function Item({ item }: { item: ISaveData }): ReactElement {
       </Row>
       <Row>
         <span>정답 비율</span>
-        <span>{(NumberOfCorrectAnswer / questions.length) * 100}%</span>
+        <span>{((NumberOfCorrectAnswer / questions.length) * 100).toFixed(2)}%</span>
       </Row>
     </Container>
   );

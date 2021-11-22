@@ -114,7 +114,7 @@ export default function Quiz(): ReactElement {
               </li>
               <li>
                 <span>정답 비율</span>
-                <span>{(NumberOfCorrectAnswer / questions.length) * 100}%</span>
+                <span>{((NumberOfCorrectAnswer / questions.length) * 100).toFixed(2)}%</span>
               </li>
             </ResultInfo>
             <ButtonWrap>
