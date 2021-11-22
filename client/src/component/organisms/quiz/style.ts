@@ -22,8 +22,9 @@ export const Inner = styled.div<{ ended?: boolean }>`
   ${tw`overflow-hidden relative flex flex-col p-4 sm:p-8 rounded-2xl bg-white`}
 
   &::before {
-    ${tw`absolute -top-2 -left-2 font-black text-8xl text-subColor text-opacity-20 z-0`}
-    ${({ ended }) => (ended ? `content: '🎉'` : `content: 'Q'`)}
+    ${tw`absolute -top-2 font-black text-8xl text-subColor text-opacity-20 z-0`}
+    ${({ ended }) => (ended ? tw`-right-2` : tw`-left-2`)}
+    ${({ ended }) => (ended ? `content: '🎉'; transform: scaleX(-1)` : `content: 'Q'`)}
   }
 `;
 
