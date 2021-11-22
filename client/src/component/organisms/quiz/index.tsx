@@ -3,7 +3,7 @@ import React, { ReactElement, useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { DIFFICULTY, QUIZ_MESSAGE } from '../../../constants';
-import { setAnswer } from '../../../store/quiz';
+import { reset, setAnswer, setProgress } from '../../../store/quiz';
 import { getQuizState } from '../../../store/quiz/selectors';
 import { saveToLocalstorage } from '../../../utils';
 import Button from '../../atoms/button';
@@ -33,6 +33,11 @@ export default function Quiz(): ReactElement {
     setSelected(true);
     setSelectedAnswer('');
     dispatch(setAnswer(questions[step].correct_answer === selectedAnswer));
+  };
+
+  const onClickReset = () => {
+    dispatch(setProgress(false));
+    dispatch(reset());
   };
 
   useEffect(() => {
@@ -110,7 +115,7 @@ export default function Quiz(): ReactElement {
               </li>
             </ResultInfo>
             <ButtonWrap>
-              <Button size={'small'} onClick={onClickNext}>
+              <Button size={'small'} onClick={onClickReset}>
                 처음으로
               </Button>
               <Button size={'small'} onClick={onClickNext}>
