@@ -18,12 +18,12 @@ export const Title = styled.h2`
   }
 `;
 
-export const Inner = styled.div`
+export const Inner = styled.div<{ ended?: boolean }>`
   ${tw`overflow-hidden relative flex flex-col p-8 rounded-2xl bg-white`}
 
   &::before {
-    content: 'Q';
     ${tw`absolute -top-2 -left-2 font-black text-8xl text-subColor text-opacity-20 z-0`}
+    ${({ ended }) => (ended ? `content: '🎉'` : `content: 'Q'`)}
   }
 `;
 
