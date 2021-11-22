@@ -2,12 +2,12 @@ import styled from 'styled-components';
 import tw from 'twin.macro';
 
 export const Container = styled.label`
-  ${tw`text-center`}
+  ${tw`flex-auto text-center`}
   font-size:0;
   line-height: 0;
 
   span {
-    ${tw`block w-16 px-2 py-2 text-gray-400 text-sm rounded-lg border border-solid border-gray-200 bg-white cursor-pointer`}
+    ${tw`block w-auto sm:w-16 px-2 py-2 text-gray-400 text-sm rounded-lg border border-solid border-gray-200 bg-white cursor-pointer`}
   }
 
   input[type='radio'] {
