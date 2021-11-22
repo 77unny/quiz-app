@@ -3,13 +3,23 @@ import React, { ReactElement, useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { DIFFICULTY, QUIZ_MESSAGE } from '../../../constants';
-import { setAnswer, setElapsedTime } from '../../../store/quiz';
+import { setAnswer } from '../../../store/quiz';
 import { getQuizState } from '../../../store/quiz/selectors';
+import { TQuestion } from '../../../store/quiz/types';
 import Button from '../../atoms/button';
 import InfoMessage from '../../atoms/infoMessage';
 import Timer from '../../atoms/timer';
 import Answers from '../../molecules/answer';
 import { ButtonWrap, Container, Inner, ResultInfo, Subject, Title } from './style';
+
+interface ISaveData {
+  setDate: string;
+  questions: TQuestion[];
+  difficulty: string;
+  NumberOfCorrectAnswer: number;
+  NumberOfIncorrectAnswer: number;
+  time: number;
+}
 
 export default function Quiz(): ReactElement {
   const dispatch = useDispatch();
@@ -39,10 +49,21 @@ export default function Quiz(): ReactElement {
     return () => clearInterval(timeRef.current);
   }, [time]);
 
+  // 퀴즈 종료 - 타이머 종료 및 저장 | 기록 저장
   useEffect(() => {
     if (!questions[step]) {
       clearInterval(timeRef.current);
-      dispatch(setElapsedTime(time));
+      const setDate = new Date().toLocaleString();
+      const saveData: ISaveData[] = [
+        { setDate, questions, difficulty, NumberOfCorrectAnswer, NumberOfIncorrectAnswer, time },
+      ];
+      if (window.localStorage.getItem('quiz') !== null) {
+        const getItem = JSON.parse(window.localStorage.getItem('quiz') || '[]') as ISaveData[];
+        const mergedItems = getItem.concat(saveData);
+        localStorage.setItem('quiz', JSON.stringify(mergedItems));
+      } else {
+        window.localStorage.setItem('quiz', JSON.stringify([...saveData]));
+      }
     }
   }, [step]);
 
