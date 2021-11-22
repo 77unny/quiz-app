@@ -3,6 +3,7 @@ import React, { ReactElement, useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { DIFFICULTY, QUIZ_MESSAGE } from '../../../constants';
+import { setIsOpen } from '../../../store/modal';
 import { reset, setAnswer, setProgress } from '../../../store/quiz';
 import { getQuizState } from '../../../store/quiz/selectors';
 import { saveToLocalstorage } from '../../../utils';
@@ -39,6 +40,8 @@ export default function Quiz(): ReactElement {
     dispatch(setProgress(false));
     dispatch(reset());
   };
+
+  const onClickModal = () => dispatch(setIsOpen(true));
 
   useEffect(() => {
     timeRef.current = setInterval(() => setTime(time + 1), 1000) as unknown as number;
@@ -115,15 +118,9 @@ export default function Quiz(): ReactElement {
               </li>
             </ResultInfo>
             <ButtonWrap>
-              <Button size={'small'} onClick={onClickReset}>
-                처음으로
-              </Button>
-              <Button size={'small'} onClick={onClickNext}>
-                기록보기
-              </Button>
-              <Button buttonType={'primary'} size={'small'} onClick={onClickNext}>
-                다시 풀기
-              </Button>
+              <Button size={'small'} onClick={onClickReset} children={'처음으로'} />
+              <Button size={'small'} onClick={onClickModal} children={'기록보기'} />
+              <Button buttonType={'primary'} size={'small'} onClick={onClickNext} children={'다시 풀기'} />
             </ButtonWrap>
           </Inner>
         </>
