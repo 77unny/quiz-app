@@ -9,7 +9,7 @@ export const Button = styled.button<{
 }>`
   ${({ buttonType }) =>
     buttonType === 'default'
-      ? tw`text-gray-600 border border-gray-200 bg-white hover:bg-gray-50`
+      ? tw`text-gray-500 border border-gray-200 bg-white hover:bg-gray-50`
       : tw`font-bold text-white border-2 border-subColor bg-mainColor bg-opacity-80 hover:bg-opacity-100`}
 
   ${({ disabled }) =>
