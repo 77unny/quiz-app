@@ -16,8 +16,8 @@ export default function Chart({ historyList }: IChart): ReactElement {
     datasets: [
       {
         data: [],
-        borderColor: 'rgb(255, 99, 132)',
-        backgroundColor: 'rgba(255, 99, 132, 0.5)',
+        borderColor: '#00c896',
+        backgroundColor: '#00c896',
       },
     ],
   });
