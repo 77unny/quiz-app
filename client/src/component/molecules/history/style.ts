@@ -9,10 +9,7 @@ export const Head = styled.h3`
   ${tw`font-bold text-xl text-gray-600 border-b border-dashed border-gray-400`}
 `;
 
-export const Body = styled.div`
-  ${tw`overflow-y-auto my-4`}
-  max-height: 300px;
-`;
+export const Body = styled.div``;
 
 export const Foot = styled.div`
   ${tw`flex justify-center space-x-2 w-full`}
