@@ -43,11 +43,17 @@ export const quizSlice = createSlice({
       }
       state.answers.push(action.payload);
     },
+    setRestart: state => {
+      state.answers = initialState.answers;
+      state.NumberOfCorrectAnswer = initialState.NumberOfCorrectAnswer;
+      state.NumberOfIncorrectAnswer = initialState.NumberOfIncorrectAnswer;
+    },
     // 초기화
     reset: () => initialState,
   },
 });
 
-export const { setProgress, setElapsedTime, setDifficulty, setQuestions, setAnswer, reset } = quizSlice.actions;
+export const { setProgress, setElapsedTime, setDifficulty, setQuestions, setAnswer, setRestart, reset } =
+  quizSlice.actions;
 
 export default quizSlice.reducer;
