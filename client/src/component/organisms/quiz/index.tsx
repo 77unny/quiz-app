@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { DIFFICULTY, QUIZ_MESSAGE } from '../../../constants';
 import { setIsOpen } from '../../../store/modal';
-import { reset, setAnswer, setProgress } from '../../../store/quiz';
+import { reset, setAnswer, setProgress, setRestart } from '../../../store/quiz';
 import { getQuizState } from '../../../store/quiz/selectors';
 import { saveToLocalstorage } from '../../../utils';
 import Button from '../../atoms/button';
@@ -42,9 +42,11 @@ export default function Quiz(): ReactElement {
     dispatch(reset());
   };
 
-  // 다시 풀기 - Todo
+  // 다시 풀기 - step,time,store 초기화
   const onClickRestart = () => {
-    console.log('@TODO : redux 에 저장된 문항으로 재시작하기!');
+    setStep(0);
+    setTime(0);
+    dispatch(setRestart());
   };
 
   const onClickModal = () => dispatch(setIsOpen(true));
