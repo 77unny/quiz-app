@@ -41,7 +41,7 @@ export default function Intro(): ReactElement {
   return (
     <Container>
       <Title>
-        클래스팅 프론트엔드 과제
+        재밌고 신나는 퀴즈 타임!
         <span>퀴즈를 풀어보세요!</span>
       </Title>
       <Difficulty selectedDifficulty={selectedDifficulty} difficulty={difficulty} handleChange={handleDifficulty} />

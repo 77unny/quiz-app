@@ -100,7 +100,7 @@ export default function Quiz(): ReactElement {
       ) : (
         <>
           <Inner ended={true}>
-            <Subject children={'클래스팅 퀴즈 종료! 수고하셨습니다 🥳'} />
+            <Subject children={'모든 퀴즈 종료! 수고하셨습니다 🥳'} />
             <ResultInfo>
               <li>
                 <span>난이도</span>
