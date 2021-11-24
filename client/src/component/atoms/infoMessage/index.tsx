@@ -3,7 +3,7 @@ import React, { ReactElement } from 'react';
 
 import { Container } from './style';
 
-export default function InfoMessage({
+export default React.memo(function InfoMessage({
   align = 'left',
   children,
 }: {
@@ -11,4 +11,4 @@ export default function InfoMessage({
   children: string;
 }): ReactElement {
   return <Container align={align} dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(children) }} />;
-}
+});

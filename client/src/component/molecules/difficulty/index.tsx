@@ -4,7 +4,11 @@ import RadioButton from '../../atoms/radioButton';
 import { Container } from './style';
 import { IDifficultyProps } from './types';
 
-export default function Difficulty({ selectedDifficulty, difficulty, handleChange }: IDifficultyProps): ReactElement {
+export default React.memo(function Difficulty({
+  selectedDifficulty,
+  difficulty,
+  handleChange,
+}: IDifficultyProps): ReactElement {
   return (
     <Container>
       {difficulty.map(({ label, value }) => (
@@ -18,4 +22,4 @@ export default function Difficulty({ selectedDifficulty, difficulty, handleChang
       ))}
     </Container>
   );
-}
+});

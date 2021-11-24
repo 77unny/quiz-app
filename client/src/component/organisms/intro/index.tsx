@@ -26,13 +26,10 @@ export default function Intro(): ReactElement {
     url: API,
   });
 
-  const difficulty = Object.values(DIFFICULTY);
-  const handleDifficulty = useCallback((value: string) => {
-    dispatch(setDifficulty(value));
-  }, []);
-
+  const difficulty = useMemo(() => Object.values(DIFFICULTY), []);
+  const handleDifficulty = useCallback((value: string) => dispatch(setDifficulty(value)), []);
+  const onClickModal = useCallback(() => dispatch(setIsOpen(true)), []);
   const handlePlayQuiz = () => dispatch(setProgress(true));
-  const onClickModal = () => dispatch(setIsOpen(true));
 
   useEffect(() => {
     if (data) dispatch(setQuestions(data.results));
