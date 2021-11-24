@@ -6,11 +6,11 @@ import useRequest from '../../../hooks/useRequest';
 import { setIsOpen } from '../../../store/modal';
 import { setDifficulty, setIsPlaying, setQuestions } from '../../../store/quiz';
 import { getQuizState } from '../../../store/quiz/selectors';
-import { TQuestion } from '../../../store/quiz/types';
 import Button from '../../atoms/button';
 import InfoMessage from '../../atoms/infoMessage';
 import Difficulty from '../../molecules/difficulty';
 import { ButtonWrap, Container, Title } from './style';
+import { IRequest } from './types';
 
 const QUIZ_API = process.env.REACT_APP_API as string;
 
@@ -22,7 +22,7 @@ export default function Intro(): ReactElement {
     return selectedDifficulty === 'random' ? QUIZ_API : `${QUIZ_API}&difficulty=${selectedDifficulty}`;
   }, [selectedDifficulty]);
 
-  const { data } = useRequest<{ response_code: number; results: TQuestion[] }>({
+  const { data } = useRequest<IRequest>({
     url: API,
   });
 
