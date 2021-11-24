@@ -1,4 +1,5 @@
 import { configureStore as startKitConfigureStore, EnhancedStore } from '@reduxjs/toolkit';
+import { enhancer as StorybookAddonEnhancer } from 'addon-redux';
 import createSagaMiddleware from 'redux-saga';
 
 import rootReducer from './rootReducer';
@@ -12,6 +13,7 @@ const configureStore = (): EnhancedStore => {
   const store = startKitConfigureStore({
     reducer: rootReducer,
     middleware: getDefaultMiddleware => getDefaultMiddleware({ serializableCheck: false }).concat(middlewares),
+    enhancers: [StorybookAddonEnhancer],
     devTools: process.env.NODE_ENV !== 'production',
   });
   sagaMiddleware.run(rootSaga);
