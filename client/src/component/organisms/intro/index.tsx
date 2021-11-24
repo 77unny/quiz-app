@@ -12,14 +12,14 @@ import InfoMessage from '../../atoms/infoMessage';
 import Difficulty from '../../molecules/difficulty';
 import { ButtonWrap, Container, Title } from './style';
 
+const QUIZ_API = process.env.REACT_APP_API as string;
+
 export default function Intro(): ReactElement {
   const dispatch = useDispatch();
   const { difficulty: selectedDifficulty } = useSelector(getQuizState);
 
   const API = useMemo(() => {
-    return selectedDifficulty === 'random'
-      ? process.env.REACT_APP_API
-      : `${process.env.REACT_APP_API as string}&difficulty=${selectedDifficulty}`;
+    return selectedDifficulty === 'random' ? QUIZ_API : `${QUIZ_API}&difficulty=${selectedDifficulty}`;
   }, [selectedDifficulty]);
 
   const { data } = useRequest<{ response_code: number; results: TQuestion[] }>({
