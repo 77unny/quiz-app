@@ -1,36 +1,24 @@
 import React, { ReactElement, useEffect, useRef, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
-import { setElapsedTime } from '../../../store/quiz';
-import { getQuizState } from '../../../store/quiz/selectors';
-import { setTime } from '../../../store/timer';
-import { getTimeState } from '../../../store/timer/selector';
+import { setTime as storeSetTime } from '../../../store/timer';
 import { timeCalculator } from '../../../utils';
 import { Container } from './style';
 
 export default React.memo(function Timer({ prefix }: { prefix?: string }): ReactElement {
   const dispatch = useDispatch();
-  const { time } = useSelector(getTimeState);
-  const { finished } = useSelector(getQuizState);
-  const [timer, setTimer] = useState(0);
-  const timeRef = useRef(timer);
-  const { min, sec } = timeCalculator(timer);
+  const [time, setTime] = useState(0);
+  const timeRef = useRef(time);
+  const { min, sec } = timeCalculator(time);
 
   useEffect(() => {
-    timeRef.current = setTimeout(() => setTimer(timer + 1), 1000) as unknown as number;
+    timeRef.current = setTimeout(() => setTime(time + 1), 1000) as unknown as number;
 
     return () => {
-      dispatch(setTime(timer));
+      dispatch(storeSetTime(time));
       clearTimeout(timeRef.current);
     };
-  }, [timer]);
-
-  useEffect(() => {
-    if (finished) {
-      dispatch(setElapsedTime(time));
-      clearTimeout(timeRef.current);
-    }
-  }, [timer, time, finished]);
+  }, [time]);
 
   return (
     <Container>
