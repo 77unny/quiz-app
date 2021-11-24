@@ -7,6 +7,7 @@ import { IQuizInitialState, TQuestion } from './types';
  * */
 const initialState: IQuizInitialState = {
   progress: false,
+  finished: false,
   elapsedTime: 0, // 경과시간
   difficulty: 'random', // 난이도
   NumberOfCorrectAnswer: 0, // 정답 수
@@ -21,6 +22,9 @@ export const quizSlice = createSlice({
   reducers: {
     setProgress: (state, action: PayloadAction<boolean>) => {
       state.progress = action.payload;
+    },
+    setFinished: (state, action: PayloadAction<boolean>) => {
+      state.finished = action.payload;
     },
     // 경과 시간 세팅
     setElapsedTime: (state, action: PayloadAction<number>) => {
@@ -53,7 +57,7 @@ export const quizSlice = createSlice({
   },
 });
 
-export const { setProgress, setElapsedTime, setDifficulty, setQuestions, setAnswer, setRestart, reset } =
+export const { setProgress, setFinished, setElapsedTime, setDifficulty, setQuestions, setAnswer, setRestart, reset } =
   quizSlice.actions;
 
 export default quizSlice.reducer;

@@ -21,6 +21,7 @@ export type TQuestion = {
  */
 export interface IQuizInitialState {
   progress: boolean;
+  finished: boolean;
   elapsedTime: number;
   difficulty: string;
   NumberOfCorrectAnswer: number;
