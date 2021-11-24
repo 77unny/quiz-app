@@ -32,3 +32,20 @@ export function saveToLocalstorage(key: string, saveData: ISaveData[]): void {
     window.localStorage.setItem(key, JSON.stringify([...saveData]));
   }
 }
+
+/**
+ * @description timeCalculator - date 를 받아
+ * @param {number} time date
+ * @return {number | string, number | string}
+ * */
+export function timeCalculator(time: number): { min: number | string; sec: number | string } {
+  const min =
+    Math.floor(time / 60) < 10
+      ? '0' +
+        Math.floor(time / 60)
+          .toString()
+          .slice(-2)
+      : Math.floor(time / 60);
+  const sec = time % 60 < 10 ? '0' + (time % 60).toString().slice(-2) : time % 60;
+  return { min, sec };
+}
