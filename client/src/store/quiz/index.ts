@@ -6,7 +6,7 @@ import { IQuizInitialState, TQuestion } from './types';
  * @description Quiz 초기 값
  * */
 const initialState: IQuizInitialState = {
-  progress: false,
+  isPlaying: false,
   difficulty: 'random', // 난이도
   NumberOfCorrectAnswer: 0, // 정답 수
   NumberOfIncorrectAnswer: 0, // 오답 수
@@ -19,8 +19,8 @@ export const quizSlice = createSlice({
   name: 'quiz',
   initialState,
   reducers: {
-    setProgress: (state, action: PayloadAction<boolean>) => {
-      state.progress = action.payload;
+    setIsPlaying: (state, action: PayloadAction<boolean>) => {
+      state.isPlaying = action.payload;
     },
     setStep: state => {
       state.step = state.step + 1;
@@ -53,6 +53,6 @@ export const quizSlice = createSlice({
   },
 });
 
-export const { setProgress, setStep, setDifficulty, setQuestions, setAnswer, setRestart, reset } = quizSlice.actions;
+export const { setIsPlaying, setStep, setDifficulty, setQuestions, setAnswer, setRestart, reset } = quizSlice.actions;
 
 export default quizSlice.reducer;
