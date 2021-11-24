@@ -7,11 +7,10 @@ import { IQuizInitialState, TQuestion } from './types';
  * */
 const initialState: IQuizInitialState = {
   progress: false,
-  finished: false,
-  elapsedTime: 0, // 경과시간
   difficulty: 'random', // 난이도
   NumberOfCorrectAnswer: 0, // 정답 수
   NumberOfIncorrectAnswer: 0, // 오답 수
+  step: 0, // 퀴즈 스텝
   questions: [], // API response 문항 리스트
   answers: [],
 };
@@ -23,12 +22,8 @@ export const quizSlice = createSlice({
     setProgress: (state, action: PayloadAction<boolean>) => {
       state.progress = action.payload;
     },
-    setFinished: (state, action: PayloadAction<boolean>) => {
-      state.finished = action.payload;
-    },
-    // 경과 시간 세팅
-    setElapsedTime: (state, action: PayloadAction<number>) => {
-      state.elapsedTime = action.payload;
+    setStep: state => {
+      state.step = state.step + 1;
     },
     // 난이도 세팅
     setDifficulty: (state, action: PayloadAction<string>) => {
@@ -48,6 +43,7 @@ export const quizSlice = createSlice({
       state.answers.push(action.payload);
     },
     setRestart: state => {
+      state.step = initialState.step;
       state.answers = initialState.answers;
       state.NumberOfCorrectAnswer = initialState.NumberOfCorrectAnswer;
       state.NumberOfIncorrectAnswer = initialState.NumberOfIncorrectAnswer;
@@ -57,7 +53,6 @@ export const quizSlice = createSlice({
   },
 });
 
-export const { setProgress, setFinished, setElapsedTime, setDifficulty, setQuestions, setAnswer, setRestart, reset } =
-  quizSlice.actions;
+export const { setProgress, setStep, setDifficulty, setQuestions, setAnswer, setRestart, reset } = quizSlice.actions;
 
 export default quizSlice.reducer;
