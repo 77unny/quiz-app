@@ -24,3 +24,12 @@ export const QUIZ_MESSAGE = {
   correct: '정답이에요 🥳',
   incorrect: '아쉬워요 😭',
 };
+
+export const MODAL_STYLE_OPTION = {
+  overlay: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: 'rgba(0, 0, 0, 0.3)',
+  },
+};
