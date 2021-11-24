@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Timer /> prefix - 지속시간: 지속시간 1`] = `
+exports[`<Timer /> [Timer] prefix - 지속시간: 지속시간 1`] = `
 .c0 {
   font-weight: 300;
   font-size: 0.875rem;
