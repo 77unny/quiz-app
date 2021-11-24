@@ -19,6 +19,7 @@
     "@types/styled-components": "^5.1.15",
     "@typescript-eslint/eslint-plugin": "^5.3.1",
     "@typescript-eslint/parser": "^5.3.1",
+    "addon-redux": "^2.0.9",
     "axios": "^0.24.0",
     "chart.js": "^3.6.0",
     "dompurify": "^2.3.3",
