@@ -29,7 +29,7 @@ export const Inner = styled.div<{ ended?: boolean }>`
 `;
 
 export const Subject = styled.p`
-  ${tw`relative mb-4 pb-3 font-bold sm:text-xl text-gray-600 border-b border-dashed border-gray-400 sm:leading-6`}
+  ${tw`relative mb-4 pb-3 font-bold sm:text-xl text-gray-600 border-0 border-b border-dashed border-gray-400 sm:leading-6`}
 `;
 
 export const ResultInfo = styled.ul`
