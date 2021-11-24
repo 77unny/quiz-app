@@ -12,14 +12,14 @@ import { AppContainer, Modal } from './style';
 
 export default function App(): ReactElement {
   const dispatch = useDispatch();
-  const { progress } = useSelector(getQuizState);
+  const { isPlaying } = useSelector(getQuizState);
   const { isOpen } = useSelector(getModalState);
 
   const onRequestClose = () => dispatch(setIsOpen(false));
 
   return (
     <AppContainer>
-      {progress ? <Quiz /> : <Intro />}
+      {isPlaying ? <Quiz /> : <Intro />}
       <Modal style={MODAL_STYLE_OPTION} isOpen={isOpen} onRequestClose={onRequestClose} children={<History />} />
     </AppContainer>
   );

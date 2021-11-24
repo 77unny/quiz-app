@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { DIFFICULTY } from '../../../constants';
 import { setIsOpen } from '../../../store/modal';
-import { reset, setProgress, setRestart } from '../../../store/quiz';
+import { reset, setIsPlaying, setRestart } from '../../../store/quiz';
 import { getQuizState } from '../../../store/quiz/selectors';
 import { getTimeState } from '../../../store/timer/selector';
 import { saveToLocalstorage, timeCalculator } from '../../../utils';
@@ -19,7 +19,7 @@ export default function Finish(): ReactElement {
 
   // 처음으로 - 초기화 처리
   const onClickHome = () => {
-    dispatch(setProgress(false));
+    dispatch(setIsPlaying(false));
     dispatch(reset());
   };
 

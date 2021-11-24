@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { DIFFICULTY } from '../../../constants';
 import useRequest from '../../../hooks/useRequest';
 import { setIsOpen } from '../../../store/modal';
-import { setDifficulty, setProgress, setQuestions } from '../../../store/quiz';
+import { setDifficulty, setIsPlaying, setQuestions } from '../../../store/quiz';
 import { getQuizState } from '../../../store/quiz/selectors';
 import { TQuestion } from '../../../store/quiz/types';
 import Button from '../../atoms/button';
@@ -29,7 +29,7 @@ export default function Intro(): ReactElement {
   const difficulty = useMemo(() => Object.values(DIFFICULTY), []);
   const handleDifficulty = useCallback((value: string) => dispatch(setDifficulty(value)), []);
   const onClickModal = useCallback(() => dispatch(setIsOpen(true)), []);
-  const handlePlayQuiz = () => dispatch(setProgress(true));
+  const handlePlayQuiz = () => dispatch(setIsPlaying(true));
 
   useEffect(() => {
     if (data) dispatch(setQuestions(data.results));
