@@ -49,3 +49,9 @@ export function timeCalculator(time: number): { min: number | string; sec: numbe
   const sec = time % 60 < 10 ? '0' + (time % 60).toString().slice(-2) : time % 60;
   return { min, sec };
 }
+
+const QUIZ_API = process.env.REACT_APP_API as string;
+
+export function selectedAPI(selected: string): string {
+  return selected === 'random' ? QUIZ_API : `${QUIZ_API}&difficulty=${selected}`;
+}

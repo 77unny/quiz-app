@@ -1,4 +1,4 @@
-import React, { ReactElement, useCallback, useEffect, useMemo } from 'react';
+import React, { ReactElement, useEffect, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { DIFFICULTY } from '../../../constants';
@@ -6,29 +6,26 @@ import useRequest from '../../../hooks/useRequest';
 import { setIsOpen } from '../../../store/modal';
 import { setDifficulty, setIsPlaying, setQuestions } from '../../../store/quiz';
 import { getQuizState } from '../../../store/quiz/selectors';
+import { selectedAPI } from '../../../utils';
 import Button from '../../atoms/button';
 import InfoMessage from '../../atoms/infoMessage';
 import Difficulty from '../../molecules/difficulty';
 import { ButtonWrap, Container, Title } from './style';
 import { IRequest } from './types';
 
-const QUIZ_API = process.env.REACT_APP_API as string;
-
 export default function Intro(): ReactElement {
   const dispatch = useDispatch();
   const { difficulty: selectedDifficulty } = useSelector(getQuizState);
 
-  const API = useMemo(() => {
-    return selectedDifficulty === 'random' ? QUIZ_API : `${QUIZ_API}&difficulty=${selectedDifficulty}`;
-  }, [selectedDifficulty]);
+  const API = useMemo(() => selectedAPI(selectedDifficulty), [selectedDifficulty]);
 
   const { data } = useRequest<IRequest>({
     url: API,
   });
 
-  const difficulty = useMemo(() => Object.values(DIFFICULTY), []);
-  const handleDifficulty = useCallback((value: string) => dispatch(setDifficulty(value)), []);
-  const onClickModal = useCallback(() => dispatch(setIsOpen(true)), []);
+  const difficulty = (() => Object.values(DIFFICULTY))();
+  const handleDifficulty = (value: string) => dispatch(setDifficulty(value));
+  const onClickModal = () => dispatch(setIsOpen(true));
   const handlePlayQuiz = () => dispatch(setIsPlaying(true));
 
   useEffect(() => {
